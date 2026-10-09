@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3f6fc"><title>線と式｜一次関数</title>
+<meta name="description" content="紙で考えて、2点から描く。式とグラフを行き来する一次関数の練習。">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232c52cc'/%3E%3Cpath d='M7 5v20h20M6 23L25 8' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+<style>:root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:#182744;background:#f3f6fc;font-synthesis:none;--blue:#2c52cc;--muted:#59677e;--border:#dbe2ef;--cyan:#0d7f85}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}button:focus-visible,input:focus-visible{outline:3px solid #edb52e;outline-offset:2px}button{border:0;border-radius:9px;background:transparent;color:inherit;min-height:40px}button:disabled{opacity:.45;cursor:default}[hidden]{display:none!important}#app{position:relative;max-width:470px;margin:0 auto;padding:12px 16px max(12px,env(safe-area-inset-bottom))}header{height:42px;display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}.brand{display:flex;align-items:center;gap:9px}.mark{display:grid;place-items:center;background:var(--blue);width:30px;height:30px;border-radius:9px;color:white;font-size:26px;font-weight:500}h1{font-size:21px;letter-spacing:.04em;margin:0}h1 span{font-size:12px;font-weight:500;letter-spacing:0;margin-left:10px;color:var(--muted)}.quiet{font-size:14px;color:var(--blue);padding:0 10px}.modes{display:flex;background:#e4eaf6;border-radius:12px;padding:4px;gap:4px}.modes button{flex:1;font-weight:650;font-size:15px;min-height:40px}.modes button[aria-pressed=true]{background:white;color:var(--blue);box-shadow:0 1px 4px #19345214}.question-head{display:flex;align-items:center;justify-content:space-between;gap:4px;height:39px;font-size:13px}.question-head>span:first-child{display:flex;align-items:center;gap:9px}.question-head b{font-variant-numeric:tabular-nums;font-size:14px;color:var(--blue)}#levelBadge{color:var(--muted);font-size:12px;white-space:nowrap}.graph-box{position:relative;background:white;border:1px solid var(--border);border-radius:15px 15px 0 0;overflow:hidden;height:clamp(230px,39svh,330px)}#graph{width:100%;height:100%;display:block}.hint-button{position:absolute;top:8px;left:8px;min-height:32px;padding:3px 9px;background:#f0f4fded;border:1px solid var(--border);font-size:12px;color:var(--blue)}.graph-popup{position:absolute;top:46px;left:12px;right:12px;background:#fff;border:1px solid #adc0ee;box-shadow:0 5px 25px #18346325;border-radius:12px;padding:10px 12px;font-size:14px}.popup-head{display:flex;justify-content:space-between;align-items:center}.popup-head button{font-size:22px;min-height:28px;width:32px}.graph-popup p{line-height:1.6;margin:7px 0}.graph-popup .quiet{min-height:30px;padding:0}.point-tip{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);border:1px solid #adbee8;border-radius:20px;background:white;padding:7px 14px;white-space:nowrap;font-size:14px;pointer-events:none}.equation-strip{min-height:61px;background:#edf2ff;border:1px solid var(--border);border-top:0;border-radius:0 0 13px 13px;display:flex;align-items:center;justify-content:space-between;padding:8px 17px;gap:8px;margin-bottom:10px}.equation-strip>span{font-size:12px;color:var(--muted)}.math{font-family:Georgia,"Times New Roman",serif;font-size:27px;display:flex;align-items:center;gap:5px}.math i{font-weight:400}.frac{display:inline-flex;vertical-align:middle;flex-direction:column;text-align:center;font-size:.76em;line-height:1.12;margin:0 3px}.frac span:first-child{border-bottom:1.4px solid currentColor;padding:0 3px 2px}.frac span:last-child{padding:2px 3px 0}.input-row{display:flex;align-items:center;gap:5px;margin-bottom:6px;min-height:44px}.row-label{font-size:14px;width:28px;font-weight:700;flex-shrink:0}.coord-fields{display:flex;align-items:center;gap:4px;flex:1;min-width:0}.number-field{width:100%;min-width:0;height:42px;background:white;border:1px solid #cbd5e8;border-radius:8px;text-align:center;font-size:17px;color:#182744;padding:0 2px;caret-color:var(--blue)}.number-field.active{border:2px solid var(--blue);background:#f5f8ff}.number-field.saved{border-color:#8cbfc2;background:#f0faf8}.coord-fields span{font-size:17px;color:var(--muted)}.edit-btn{width:34px;min-height:42px;background:#e8eef9;font-size:20px;padding:0}.edit-btn.fraction{font-size:12px;line-height:1.1}.commit{min-height:42px;padding:0 9px;color:white;background:var(--blue);font-size:14px;white-space:nowrap}.coefficient-label{font-family:Georgia,serif;font-style:italic;font-size:21px;width:27px}.keypad-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;padding:7px 0 3px}.keypad-grid button{min-height:39px;background:white;border:1px solid var(--border);font-size:20px;font-variant-numeric:tabular-nums}.keypad-grid button:last-child{font-size:12px;background:#e8eef9}.editing .graph-box{height:clamp(150px,25svh,220px)}#feedback{font-size:14px;line-height:1.5;min-height:37px;display:flex;align-items:center;color:var(--muted);padding:3px 1px 5px}#feedback.error{color:#a63735}#feedback.success{color:#09675f;font-weight:650}footer{display:flex;gap:8px}footer button{min-height:44px;padding:0 17px;font-size:15px;font-weight:600}.primary{background:var(--blue);color:white;flex:1}.secondary{border:1px solid #cad4e8;background:white;color:var(--muted)}.bottom-note{display:flex;justify-content:space-between;align-items:center;gap:4px;padding-top:5px;color:var(--muted);font-size:11px}.bottom-note button{font-size:11px;text-decoration:underline;min-height:30px;padding:0}#settings{position:absolute;z-index:5;top:55px;left:16px;right:16px;background:white;border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 50px #17305530;padding:14px}.settings-title{display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:600}.level-options{display:flex;gap:8px}.level-options button{flex:1;border:1px solid var(--border);font-size:15px}.level-options button[aria-pressed=true]{border-color:var(--blue);background:#edf2ff;color:var(--blue)}#settings p{font-size:13px;line-height:1.65;color:var(--muted);margin:10px 0 0}svg text{font-family:-apple-system,BlinkMacSystemFont,sans-serif}svg .plot-point{cursor:pointer}svg .plot-point:focus{outline:none}svg .plot-point:focus circle{stroke:#edb52e;stroke-width:3}@media(min-width:700px){#app{margin:24px auto;padding:18px 24px 15px;background:#f8faff;border:1px solid #dbe2ef;border-radius:24px;box-shadow:0 16px 50px #26386c0a}.graph-box{height:330px}.editing .graph-box{height:245px}}@media(max-height:710px) and (max-width:699px){#app{padding-top:5px}header{margin-bottom:5px;height:35px}.question-head{height:32px}.graph-box{height:220px}.editing .graph-box{height:145px}.equation-strip{min-height:53px;margin-bottom:7px}.bottom-note{display:none}.keypad-grid button{min-height:36px}}@media(prefers-reduced-motion:no-preference){button{transition:background .12s,box-shadow .12s}button:active{filter:brightness(.94)}}
+
+/* Compact navigation and controls, with hints above the plot. */
+header{height:34px;margin-bottom:5px}.mark{width:26px;height:26px;font-size:22px}h1{font-size:18px}h1 span{margin-left:7px}.modes{padding:2px;border-radius:9px;gap:2px}.modes button{min-height:30px;font-size:13px;border-radius:7px}.question-head{min-height:33px;height:auto;padding:6px 0;font-size:12px}.question-head>span:first-child{gap:6px}.question-head b{font-size:12px}.above-graph{position:relative}.graph-popup{top:auto;bottom:1px;left:0;right:0;z-index:4;padding:7px 10px;border-radius:10px;font-size:13px;box-shadow:0 -3px 16px #18346318}.popup-head{gap:8px}.popup-head b{font-size:12px;margin-right:auto}.graph-popup p{margin:3px 0 0;line-height:1.45}.graph-popup .quiet{font-size:12px;min-height:26px}.popup-head button{min-height:26px}.row-label{width:17px}.edit-btn{flex:0 0 30px;width:30px}.input-row{gap:4px}.coord-fields{gap:3px}.commit{padding:0 8px;font-size:13px;min-width:45px}.number-field{font-size:16px}.bottom-note>span{display:none}.bottom-note{justify-content:flex-end}#settings{top:47px}@media(max-width:350px){#app{padding-left:10px;padding-right:10px}.row-label{width:14px}.edit-btn{flex-basis:28px;width:28px}.edit-btn.fraction{font-size:11px}.coord-fields{gap:2px}.commit{padding:0 6px;min-width:40px;font-size:12px}.input-row{gap:3px}.number-field{font-size:15px}.question-head{font-size:11px}.coefficient-label{width:16px;font-size:18px}}
+
+.hint-formula{display:inline-flex;align-items:center;gap:6px;vertical-align:middle;white-space:nowrap;margin-left:5px}.hint-fraction{display:inline-flex;flex-direction:column;text-align:center;line-height:1.25;vertical-align:middle}.hint-fraction>span:first-child{border-bottom:1.5px solid currentColor;padding:0 5px 3px}.hint-fraction>span:last-child{padding:3px 5px 0}
+
+/* Use the available screen for a square-unit graph, with minimal outside margins. */
+.hint-button{top:3px;left:5px;width:29px;min-height:29px;padding:0;border-radius:50%;font-size:17px;font-weight:700;background:#f0f4fdf2}
+@media(max-width:699px){#app{--page-gutter:16px}.graph-box{margin-left:calc(-1 * var(--page-gutter));margin-right:calc(-1 * var(--page-gutter));border-left:0;border-right:0;border-radius:0}.equation-strip{margin-left:calc(-1 * var(--page-gutter));margin-right:calc(-1 * var(--page-gutter));border-left:0;border-right:0;border-radius:0;padding-left:var(--page-gutter);padding-right:var(--page-gutter)}}
+@media(max-width:350px){#app{--page-gutter:10px}}
+
+button.row-label{padding:0;min-height:42px;border-radius:6px}button.row-label[aria-pressed=true]{background:#dce6ff;color:var(--blue);box-shadow:inset 0 -3px var(--blue)}#graph{touch-action:manipulation}
+
+.equation-strip{position:relative}.coefficient-term{font:inherit;display:inline-flex;align-items:center;gap:3px;min-height:36px;padding:0 2px;border-radius:5px;border-bottom:1px dotted #8298c5;white-space:nowrap}.coefficient-term:focus-visible{outline:2px solid #edb52e}.coefficient-tip{position:absolute;right:12px;bottom:calc(100% + 5px);z-index:3;display:flex;align-items:center;background:white;border:1px solid #a7b9e3;border-radius:10px;box-shadow:0 3px 12px #19345222;padding:2px 4px}.coefficient-tip button{min-height:32px;padding:0 9px;font-size:14px;color:var(--blue)}#closeCoefficientTip{font-size:19px;padding:0 7px}.visual-hint{pointer-events:none}.visual-hint [data-hint-intercept]{pointer-events:auto;cursor:pointer}
+
+.equation-meta{display:flex;flex-direction:column;align-items:flex-start;flex-shrink:0;gap:2px}.equation-meta>span{font-size:12px;color:var(--muted)}#refreshQuestion{min-height:28px;padding:2px 8px;font-size:12px;color:var(--blue);background:white;border:1px solid #cbd7f0;border-radius:7px}
+
+#hintNext{white-space:nowrap;flex-shrink:0}.graph-popup[data-worked="true"]{position:relative;bottom:auto;margin-bottom:5px}.hint-calculation{display:flex;align-items:center;flex-wrap:wrap;gap:3px;font-family:Georgia,"Times New Roman",serif;font-size:18px;margin:6px 0;line-height:1.5}
+
+.settings-subtitle{font-size:13px;margin:12px 0 7px;color:var(--muted)}#scopeOptions{margin-top:5px}#scopeNote{margin:5px 0 8px}#axisOption{display:flex;align-items:center;gap:7px;font-size:14px;min-height:30px}#axisOption input{width:17px;height:17px;accent-color:var(--blue)}.hint-button.method-hint{width:auto;padding:0 7px;border-radius:8px;font-size:12px;font-weight:500;min-height:29px}.axes-hint{left:auto;right:5px;width:auto;padding:0 7px;border-radius:8px;font-size:12px;font-weight:500}.advanced-equation{font-size:clamp(21px,6.5vw,27px);white-space:nowrap}.advanced-calculation{font-family:Georgia,"Times New Roman",serif;font-size:21px;line-height:1.6;display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin:4px 0}.hint-caption{display:block;font-size:12px;margin-top:3px}
+
+/* Hint overlays occupy the header area and never participate in page layout. */
+.above-graph{position:static}
+#hint.graph-popup,#hint.graph-popup[data-worked="true"]{position:absolute;top:5px;bottom:auto;left:10px;right:10px;z-index:6;max-height:var(--hint-space,108px);margin:0;padding:6px 9px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 2px 12px #18346320}
+#hint .popup-head{flex:0 0 auto;min-height:26px;gap:6px}
+#hint .popup-head b{font-size:12px;white-space:nowrap}
+#hint .popup-head button{flex-shrink:0}
+#hintText{min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;margin:2px 0 0;padding-bottom:2px;font-size:13px;line-height:1.4}
+#hint .advanced-calculation{font-size:18px;line-height:1.25;margin:3px 0}
+#hint .hint-calculation{font-size:17px;line-height:1.25;margin:3px 0}
+
+.coefficient-label{display:inline-flex;align-items:center;gap:1px;flex:0 0 auto;width:auto;white-space:nowrap;font-style:normal;font-size:19px}.coefficient-label i{font-weight:400}.coefficient-label span{font-family:inherit;font-style:normal;font-size:16px;color:inherit}@media(max-width:350px){.coefficient-label{width:auto;font-size:18px}.coefficient-label span{font-size:14px}}
+.home-link{display:block;text-align:center;font-size:12px;color:#59677e;padding:8px;text-decoration:underline}</style>
+</head>
+<body>
+<main id="app">
+  <header><div class="brand"><span class="mark" aria-hidden="true">╱</span><h1>線と式<span>一次関数</span></h1></div><button id="settingsToggle" class="quiet" aria-expanded="false" aria-controls="settings">設定 ≫</button></header>
+  <section id="settings" hidden aria-label="出題設定"><div class="settings-title">出題設定<button id="closeSettings" class="quiet">閉じる</button></div><div id="scopeOptions" class="level-options"><button data-scope="basic" aria-pressed="true">基本</button><button data-scope="advanced" aria-pressed="false">発展</button></div><p id="scopeNote">発展：いろいろな直線（式からグラフ）</p><label id="axisOption" hidden><input type="checkbox" id="includeAxis" checked> 縦線・横線を含む</label><div id="difficultySettings"><div class="settings-subtitle">数の難しさ</div><div class="level-options"><button data-level="integer" aria-pressed="true">整数のみ</button><button data-level="fraction" aria-pressed="false">分数あり</button></div><p>斜めの直線は変形後の傾き・切片、縦線・横線は固定する座標で区分。変更すると新しい問題になります。</p></div></section>
+  <div class="above-graph">
+  <nav class="modes" aria-label="学習の方向"><button data-mode="draw" aria-pressed="true">式からグラフ</button><button data-mode="read" aria-pressed="false">グラフから式</button></nav>
+  <div class="question-head"><span><b id="questionNo">01</b><span id="instruction">切片と傾きから、グラフを描こう。</span></span><span id="levelBadge">整数</span></div>
+    <div id="hint" class="graph-popup" hidden><div class="popup-head"><b id="hintTitle">ヒント</b><button id="hintNext" class="quiet">図で見る</button><button id="closeHint" aria-label="ヒントを閉じる">×</button></div><p id="hintText"></p></div>
+  </div>
+  <section class="graph-box" aria-label="座標平面">
+    <svg id="graph" viewBox="30 10 310 300" role="group" aria-label="x軸とy軸の座標平面"></svg>
+    <button id="hintButton" aria-expanded="false" aria-controls="hint" class="hint-button" aria-label="ヒントを表示">?</button>
+    <button id="axesHintButton" hidden aria-expanded="false" aria-controls="hint" class="hint-button axes-hint" aria-label="軸との交点のヒント">? 軸との交点</button>
+    <div id="pointTip" class="point-tip" hidden></div>
+  </section>
+  <section class="equation-strip" aria-label="式"><div class="equation-meta"><span id="equationLabel">問題の式</span><button id="refreshQuestion" aria-label="同じ難易度で新しい問題に更新" title="新しい問題に更新">更新</button></div><div id="equation" class="math"></div><div id="coefficientTip" class="coefficient-tip" hidden><button id="coefficientTipAction"></button><button id="closeCoefficientTip" aria-label="係数の説明を閉じる">×</button></div></section>
+  <section id="answerPanel" aria-label="解答の入力"></section>
+  <section id="keypad" hidden aria-label="数字入力"><div class="keypad-grid"></div></section>
+  <div id="feedback" role="status" aria-live="polite">切片の点から、傾きに沿ってもう１点。</div>
+  <footer><button id="reset" class="secondary">やり直す</button><button id="check" class="primary">答えを確かめる</button><button id="next" class="primary" hidden>次の問題</button></footer>
+  <div class="bottom-note"><span>考えるのは紙で。確かめるのはここで。</span><button id="skip">この問題をとばす</button></div>
+<a class="home-link" href="./index.html">教材一覧へ</a></main>
+<script>'use strict';
+const $=s=>document.querySelector(s);
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+function rat(n,d=1){if(!d)throw Error('分母は０にできません。');if(d<0){n=-n;d=-d}const g=gcd(n,d);return {n:n/g,d:d/g}}
+const add=(a,b)=>rat(a.n*b.d+b.n*a.d,a.d*b.d);
+const sub=(a,b)=>rat(a.n*b.d-b.n*a.d,a.d*b.d);
+const mul=(a,b)=>rat(a.n*b.n,a.d*b.d);
+const div=(a,b)=>rat(a.n*b.d,a.d*b.n);
+const eq=(a,b)=>a.n===b.n&&a.d===b.d;
+const num=a=>a.n/a.d;
+const str=a=>a.d===1?String(a.n):`${a.n}/${a.d}`;
+function parse(s){s=String(s).trim().replace(/−/g,'-');if(!/^-?\d{1,4}(\/\d{1,4})?$/.test(s))throw Error('整数、または「1/2」の形で入力しよう。');const[n,d=1]=s.split('/').map(Number);return rat(n,d)}
+function frac(a){const sign=a.n<0?'−':'';return sign+(a.d===1?Math.abs(a.n):`<span class="frac"><span>${Math.abs(a.n)}</span><span>${a.d}</span></span>`)}
+function formula(a,b){return `<i>y</i> = ${Math.abs(a.n)===a.d?(a.n<0?'−':''):frac(a)}<i>x</i>${b.n?` ${b.n<0?'−':'+'} ${frac(rat(Math.abs(b.n),b.d))}`:''}`}
+function makePool(level){const map=new Map();for(let d=1;d<=4;d++)for(let n=-5;n<=5;n++){if(!n||gcd(n,d)!==1)continue;const a=rat(n,d);for(let x0=-3;x0<=3;x0++)for(let y0=-4;y0<=4;y0++){const b=sub(rat(y0),mul(a,rat(x0)));if(Math.abs(num(b))>5)continue;if(level==='integer'&&(a.d!==1||b.d!==1))continue;if(level==='fraction'&&a.d===1&&b.d===1)continue;const pts=[];for(let x=-5;x<=5;x++){const y=add(mul(a,rat(x)),b);if(y.d===1&&Math.abs(y.n)<=5)pts.push([rat(x),y])}if(pts.length<2)continue;map.set(str(a)+','+str(b),{a,b,pts})}}return [...map.values()]}
+const pools={integer:makePool('integer'),fraction:makePool('fraction')};
+const state={mode:'draw',level:'integer',scope:'basic',gridlessBag:[],includeAxis:true,advancedCount:0,transformed:false,q:null,count:0,values:{},points:[null,null],coefficients:null,active:null,targetPoint:0,solved:false,revealed:false,hint:0,hintTopic:null,hintStage:0,hintManual:false,readAnchor:false};
+function feedback(t,type=''){$('#feedback').textContent=t;$('#feedback').className=type}
+function chooseQuestion(){
+ if(state.mode==='read'&&state.scope==='advanced')return chooseGridlessQuestion();
+ if(state.mode==='draw'&&state.scope==='advanced')return chooseAdvancedQuestion();
+ let pool=pools[state.level];if(state.count%5===4)pool=pool.filter(q=>q.b.n===0);
+ if(state.q)pool=pool.filter(q=>!eq(q.a,state.q.a)||!eq(q.b,state.q.b));
+ return pool[Math.floor(Math.random()*pool.length)];
+}
+function newQuestion(){
+ state.q=chooseQuestion();state.count++;reset();
+ $('#instruction').textContent=state.mode==='read'?(state.q.gridless?'交点の座標から、式を求めよう。':'この直線の式を、紙で求めよう。'):state.q.kind==='general'?'式変形か、軸との交点で描こう。':isAxisQuestion()?'式を満たす２点を選ぼう。':state.q.b.d!==1?'整数の点を見つけ、傾きで描こう。':'切片と傾きから、グラフを描こう。';
+ if(state.q.kind==='general'&&!state.q.C)$('#instruction').textContent='式を変形して、グラフを描こう。';
+ $('#questionNo').textContent=String(state.count).padStart(2,'0');updateSettings();updateHintButtons();
+}
+function reset(){state.transformed=false;state.targetPoint=0;$('#axesHintButton').setAttribute('aria-expanded','false');state.values={};state.points=[null,null];state.coefficients=null;state.solved=false;state.revealed=false;state.active=null;state.hint=0;state.hintTopic=null;state.hintStage=0;state.hintManual=false;state.readAnchor=false;$('#coefficientTip').hidden=true;$('#hint').hidden=true;$('#hintButton').setAttribute('aria-expanded','false');$('#pointTip').hidden=true;$('#check').hidden=false;$('#next').hidden=true;renderPanel();renderEquation();drawGraph();closeKeyboard();feedback(state.mode==='draw'?'グラフをタップして点Aを配置。座標入力も可。':'紙で求めた傾き a と切片 b を入力。');}
+function renderPanel(){const field=(id,label)=>`<input class="number-field" id="${id}" aria-label="${label}" placeholder="${id.endsWith('x')?'x':id.endsWith('y')?'y':id}" readonly inputmode="none" autocomplete="off" value="">`;
+const controls=row=>`<button class="edit-btn" data-edit="minus" data-row="${row}" aria-label="${row==='ab'?'式':row==='0'?'点A':'点B'}の選択中の数の符号を変える">−</button><button class="edit-btn fraction" data-edit="fraction" data-row="${row}" aria-label="${row==='ab'?'式':row==='0'?'点A':'点B'}の選択中の数を分数にする">分数</button>`;
+const confirm=row=>`<button class="commit" data-commit="${row}">確定</button>`;
+$('#answerPanel').innerHTML=state.mode==='draw'?[0,1].map(i=>`<div class="input-row" data-row="${i}"><button class="row-label" data-select-point="${i}" aria-label="点${i?'B':'A'}を選んで配置" aria-pressed="${state.targetPoint===i}">${i?'B':'A'}</button>${controls(String(i))}<div class="coord-fields"><span>(</span>${field('p'+i+'x','点'+(i?'B':'A')+'のx座標')}<span>,</span>${field('p'+i+'y','点'+(i?'B':'A')+'のy座標')}<span>)</span></div>${confirm(String(i))}</div>`).join(''):`<div class="input-row" data-row="ab">${controls('ab')}<div class="coord-fields"><label class="coefficient-label" for="a"><i>a</i><span>＝</span></label>${field('a','傾き a')}<label class="coefficient-label" for="b"><i>b</i><span>＝</span></label>${field('b','切片 b')}</div>${confirm('ab')}</div>`;
+document.querySelectorAll('.number-field').forEach(el=>{el.addEventListener('click',()=>activate(el.id));el.addEventListener('focus',()=>activate(el.id));});
+document.querySelectorAll('[data-edit]').forEach(el=>el.onclick=()=>{const row=el.dataset.row;const ids=row==='ab'?['a','b']:[`p${row}x`,`p${row}y`];if(!ids.includes(state.active))activate(ids[0]);edit(el.dataset.edit)});
+document.querySelectorAll('[data-select-point]').forEach(el=>el.onclick=()=>{if(state.solved)return;selectPoint(Number(el.dataset.selectPoint));closeKeyboard();feedback(`グラフをタップして点${state.targetPoint?'B':'A'}を配置。`)});
+document.querySelectorAll('[data-commit]').forEach(el=>el.onclick=()=>commit(el.dataset.commit));}
+function activate(id){if(state.solved)return;if(id.startsWith('p'))selectPoint(Number(id[1]));state.active=id;$('#keypad').hidden=false;$('#app').classList.add('editing');document.querySelectorAll('.number-field').forEach(el=>el.classList.toggle('active',el.id===id));}
+function closeKeyboard(){state.active=null;$('#keypad').hidden=true;$('#app').classList.remove('editing');document.querySelectorAll('.number-field').forEach(el=>el.classList.remove('active'));}
+function edit(key){if(!state.active||state.solved)return;const id=state.active;let v=state.values[id]||'';if(key==='minus')v=v.startsWith('-')?v.slice(1):'-'+v;else if(key==='fraction'){if(v&&!v.includes('/'))v+='/' }else if(key==='back')v=v.slice(0,-1);else if(key==='clear')v='';else if(/^\d$/.test(key)&&v.length<10)v+=key;else return;state.values[id]=v;$('#'+id).value=v;$('#'+id).classList.remove('saved');if(id.startsWith('p')){const row=Number(id[1]);state.points[row]=null;document.querySelector(`[data-commit="${row}"]`).textContent='確定'}else{state.coefficients=null;document.querySelector('[data-commit="ab"]').textContent='確定'}state.revealed=false;drawGraph();renderEquation();feedback('入力欄の横の「確定」で反映。');}
+function commit(row){if(state.solved)return;try{if(row==='ab'){const a=parse(state.values.a||''),b=parse(state.values.b||'');state.coefficients={a,b};syncHintProgress();drawGraph();['a','b'].forEach(id=>$('#'+id).classList.add('saved'));renderEquation();feedback('式を確定しました。答えを確かめよう。')}else{const i=Number(row);const x=parse(state.values[`p${i}x`]||''),y=parse(state.values[`p${i}y`]||'');if(Math.abs(num(x))>6||Math.abs(num(y))>6)throw Error('このグラフでは −6〜6 の座標を使おう。');state.points[i]=[x,y];[`p${i}x`,`p${i}y`].forEach(id=>$('#'+id).classList.add('saved'));feedback(state.points.every(Boolean)?'２点を結びました。答えを確かめよう。':`点${i?'B':'A'}を置きました。もう１点を求めよう。`);drawGraph()}document.querySelector(`[data-commit="${row}"]`).textContent='確定済';closeKeyboard()}catch(e){feedback(e.message,'error')}}
+function interactiveFormula(a,b){
+ const term=(topic,content,label)=>`<button class="coefficient-term" data-topic="${topic}" aria-label="${label}" aria-haspopup="true">${content}</button>`;
+ const slope=Math.abs(a.n)===a.d?term('slope',`${a.n<0?'−':''}<i>x</i>`,'傾き '+str(a)+' の意味'):term('slope',frac(a),'傾き '+str(a)+' の意味')+'<i>x</i>';
+ const intercept=term('intercept',`${b.n<0?'−':'+'} ${frac(rat(Math.abs(b.n),b.d))}`,'切片 '+str(b)+' の意味');
+ return '<i>y</i> = '+slope+' '+intercept;
+}
+function renderEquation(){
+ $('#coefficientTip').hidden=true;
+ if(state.mode==='draw'){$('#equationLabel').textContent='問題の式';$('#equation').innerHTML=state.q.kind?advancedFormula(state.q):interactiveFormula(state.q.a,state.q.b)}
+ else{$('#equationLabel').textContent='答えの式';$('#equation').innerHTML=state.coefficients?interactiveFormula(state.coefficients.a,state.coefficients.b):'<i>y</i> = <button class="coefficient-term" data-topic="slope" aria-label="傾き a の意味">a</button><i>x</i> + <button class="coefficient-term" data-topic="intercept" aria-label="切片 b の意味">b</button>'}
+}
+function lineFromPoints(points){const[p,q]=points;if(eq(p[0],q[0]))return null;const a=div(sub(q[1],p[1]),sub(q[0],p[0]));return {a,b:sub(p[1],mul(a,p[0]))}}
+function check(){if(state.solved)return;closeKeyboard();let ok=false;if(state.mode==='draw'){if(!state.points.every(Boolean)){feedback('点Aと点Bを入力し、それぞれ「確定」を押そう。','error');return}if(!distinctPoints(state.points)){feedback('異なる２点を選ぼう。','error');return}
+ const on=state.points.map(p=>pointOnQuestion(state.q,p));ok=on.every(Boolean);
+ if(!ok){const advice=isAxisQuestion()?`２点とも ${state.q.kind==='vertical'?'x':'y'} = ${str(state.q.k)} になるか確認しよう。`:'２点の座標を問題の式に代入して確かめよう。';feedback((on[0]?'点Aは合っています。':on[1]?'点Bは合っています。':'')+advice,'error')}
+}else{if(!state.coefficients){feedback('傾き a と切片 b を入力し、横の「確定」を押そう。','error');return}ok=eq(state.coefficients.a,state.q.a)&&eq(state.coefficients.b,state.q.b);if(!ok)feedback(eq(state.coefficients.a,state.q.a)?'傾きは合っています。y軸との交点を確認しよう。':eq(state.coefficients.b,state.q.b)?'切片は合っています。２点の「yの差 ÷ xの差」を確認しよう。':'２点の座標から、まず傾きを求め直してみよう。','error')}
+if(ok){state.solved=true;state.revealed=true;feedback('正解！ 式とグラフがつながりました。','success');$('#check').hidden=true;$('#next').hidden=false;document.querySelectorAll('#answerPanel button,#answerPanel input').forEach(e=>e.disabled=true);drawGraph();}}
+
+function hintGeometry(q,mode){
+ const intercept=[rat(0),q.b];
+ let start,end;
+ if(mode==='read'){start=q.pts[0];end=q.pts[q.pts.length-1];}
+ else if(q.b.d!==1){start=q.pts[0];end=q.pts[1];}
+ else {
+  const right=[rat(q.a.d),add(q.b,rat(q.a.n))];
+  if(Math.abs(num(right[1]))<=6){start=intercept;end=right;}
+  else{start=[rat(-q.a.d),sub(q.b,rat(q.a.n))];end=intercept;}
+ }
+ return {intercept,start,end,dx:sub(end[0],start[0]),dy:sub(end[1],start[1])};
+}
+function visualHint(q,mode,px,py,topic='slope',stage=3){
+ const h=hintGeometry(q,mode),x1=px(num(h.start[0])),y1=py(num(h.start[1])),x2=px(num(h.end[0])),y2=py(num(h.end[1])),by=py(num(h.intercept[1]));
+ const difference=(end,start)=>str(end)+' − '+(start.n<0?'('+str(start)+')':str(start));
+ const dxLabel=topic==='coordinateDifference'&&stage===2?'横 '+difference(h.end[0],h.start[0]):'横 +'+str(h.dx);
+ const dyLabel=topic==='coordinateDifference'&&stage===2?'縦 '+difference(h.end[1],h.start[1]):'縦 '+(h.dy.n>0?'+':'−')+str(rat(Math.abs(h.dy.n),h.dy.d));
+ const goingUp=h.dy.n>0, labelY=y1+(goingUp?19:-10),rightSide=x2<(topic==='coordinateDifference'&&stage===2?205:265);
+ const label=(x,y,text,color,anchor='middle')=>`<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="13" font-weight="700" fill="${color}" stroke="white" stroke-width="4" paint-order="stroke" stroke-linejoin="round">${text}</text>`;
+ const fractionalMark=`<circle data-hint-intercept="true" cx="${px(0)}" cy="${by}" r="3.5" fill="#0d7f85"/>`;
+ if(topic==='intercept'&&q.b.d!==1)return `<g class="visual-hint" aria-label="緑の点が切片です。">${fractionalMark}</g>`;
+ if(topic==='intercept')return `<g class="visual-hint" aria-label="切片はここ。y軸と直線の交点です。"><circle data-hint-intercept="true" cx="${px(0)}" cy="${by}" r="12" fill="#0d7f8520" stroke="#0d7f85" stroke-width="2.5"/>${label(px(0)-17,by-13,'切片はここ','#08767c','end')}</g>`;
+ return `<g class="visual-hint" role="group" aria-label="ヒント。y軸との交点が切片。${topic==='coordinateDifference'&&stage===2?dxLabel+'、'+dyLabel:'横の変化は'+str(h.dx)+'、縦の変化は'+str(h.dy)}。傾きは縦の変化を横の変化で割ります。">
+ <defs><marker id="hintRight" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8" fill="#b96b09"/></marker><marker id="hintRise" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8" fill="#9550b9"/></marker></defs>
+ ${q.b.d!==1?fractionalMark:`<circle cx="${px(0)}" cy="${by}" r="10" fill="#0d7f8515" stroke="#0d7f85" stroke-width="2.5"/>${label(px(0)-15,by+(Math.abs(by-y1)<8? -13:5),'切片','#08767c','end')}`}
+ <path d="M${x1} ${y1}H${x2}" fill="none" stroke="#b96b09" stroke-width="2.3" stroke-dasharray="5 3" marker-end="url(#hintRight)"/>
+ <path d="M${x2} ${y1}V${y2}" fill="none" stroke="#9550b9" stroke-width="2.3" stroke-dasharray="5 3" marker-end="url(#hintRise)"/>
+ ${label((x1+x2)/2,labelY,dxLabel,'#995404')}
+ ${label(x2+(rightSide?10:-10),(y1+y2)/2+4,dyLabel,'#8340a6',rightSide?'start':'end')}
+ </g>`;
+}
+
+function drawGraph(){$('#pointTip').hidden=true;const S=22,O=180,Y=160;const px=x=>O+S*x,py=y=>Y-S*y;let out='<defs><clipPath id="plotClip"><rect x="48" y="28" width="264" height="264"/></clipPath></defs>';for(let i=-6;i<=6;i++){if(i&&!state.q.gridless)out+=`<path d="M${px(i)} 28V292 M48 ${py(i)}H312" stroke="#e4eaf3" stroke-width="1"/>`;}out+='<path d="M41 160H325 M180 300V18" fill="none" stroke="#74839d" stroke-width="1.3"/><path d="m320 156 6 4-6 4 M176 24l4-6 4 6" fill="none" stroke="#74839d" stroke-width="1.3"/>';for(let i=-6;i<=6;i++){if(!i||state.q.gridless)continue;out+=`<text x="${px(i)}" y="175" text-anchor="middle" fill="#66758b" font-size="10">${i}</text><text x="171" y="${py(i)+3}" text-anchor="end" fill="#66758b" font-size="10">${i}</text>`}out+='<text x="332" y="164" font-size="14" fill="#455b7c" font-style="italic">x</text><text x="187" y="20" font-size="14" fill="#455b7c" font-style="italic">y</text><text x="169" y="175" font-size="10" fill="#66758b">0</text>';
+const line=(a,b,color,dash='')=>`<path d="M${px(-6)} ${py(num(a)*-6+num(b))}L${px(6)} ${py(num(a)*6+num(b))}" stroke="${color}" stroke-width="2.7" fill="none" stroke-dasharray="${dash}" clip-path="url(#plotClip)"/>`;
+let points=state.points;if(state.mode==='read'){out+=line(state.q.a,state.q.b,'#2c52cc');const pts=state.q.pts;points=[pts[0],pts[pts.length-1]];}else if(state.points.every(Boolean)&&distinctPoints(state.points)){const l=lineFromPoints(state.points);if(l)out+=line(l.a,l.b,state.solved?'#0d7f85':'#2c52cc');else{const x=px(num(state.points[0][0]));out+=`<path d="M${x} 28V292" stroke="${state.solved?'#0d7f85':'#2c52cc'}" stroke-width="2.7"/>`}}
+syncHintProgress();
+if(!$('#hint').hidden){
+ if(state.hintTopic==='coordinateDifference'&&state.hintStage>=2)out+=visualHint(state.q,state.mode,px,py,'coordinateDifference',state.hintStage);
+ else if(['axes','fixed'].includes(state.hintTopic))out+=advancedVisualHint(px,py);
+ else if(state.hintStage===2&&['intercept','slope'].includes(state.hintTopic)&&!isAxisQuestion())out+=visualHint(state.q,state.mode,px,py,state.hintTopic);
+}
+points.forEach((p,i)=>{if(!p)return;const x=px(num(p[0])),y=py(num(p[1]));const label=state.mode==='read'?`(${str(p[0])}, ${str(p[1])})`:(i?'B':'A');const tx=x>260?x-9:x+9,ty=y<55?y+20:y-11;out+=`<g class="plot-point" tabindex="0" role="button" aria-label="点${i?'B':'A'}、座標 ${str(p[0])}, ${str(p[1])}" data-point="${i}"><circle cx="${x}" cy="${y}" r="13" fill="transparent"/><circle cx="${x}" cy="${y}" r="4.5" fill="${state.solved?'#0d7f85':'#2c52cc'}" stroke="white" stroke-width="2"/><text x="${tx}" y="${ty}" text-anchor="${x>260?'end':'start'}" font-size="13" font-weight="600" fill="#2344a4" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round">${label}</text></g>`});
+$('#graph').innerHTML=out;$('#graph').setAttribute('aria-label',state.mode==='read'?`直線は２点 (${str(points[0][0])}, ${str(points[0][1])}) と (${str(points[1][0])}, ${str(points[1][1])}) を通ります。`:'座標平面。クリックまたはタップで整数座標に点を配置できます。分数は入力欄で指定してください。');document.querySelectorAll('[data-point]').forEach(el=>{const show=()=>{if(state.mode==='read'){state.readAnchor=true;syncHintProgress();drawGraph()}if(state.mode==='draw'&&!state.solved){selectPoint(Number(el.dataset.point));closeKeyboard();feedback(`次のタップで点${state.targetPoint?'B':'A'}を移動。`)}const p=points[Number(el.dataset.point)];$('#pointTip').textContent=`${el.dataset.point==='0'?'A':'B'} (${str(p[0])}, ${str(p[1])})`;$('#pointTip').hidden=false};el.onclick=e=>{e.stopPropagation();show()};el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show()}}});}
+function suggestedHintTopic(){
+ if(state.q.gridless)return 'coordinateDifference';
+ if(isAxisQuestion())return 'fixed';
+ if(state.q.kind==='general'&&!state.transformed)return 'transform';
+ if(state.mode==='read')return state.readAnchor||(state.coefficients&&eq(state.coefficients.b,state.q.b))?'slope':'intercept';
+ const fractionalIntercept=state.q.b.d!==1;
+ return state.points.some(p=>p&&(!fractionalIntercept||(p[0].d===1&&p[1].d===1))&&eq(p[1],add(mul(state.q.a,p[0]),state.q.b)))?'slope':fractionalIntercept?'integerPoint':'intercept';
+}
+function integerPointExample(q){
+ const badX=[1,2,3,4,5].find(x=>add(mul(q.a,rat(x)),q.b).d!==1);
+ const badY=add(mul(q.a,rat(badX)),q.b);
+ const candidates=q.pts.slice().sort((p,r)=>{const rank=x=>x>0?x:20+Math.abs(x);return rank(num(p[0]))-rank(num(r[0]));});
+ return {badX,badY,nextX:candidates[0][0]};
+}
+function hintStages(topic){return {coordinateDifference:3,integerPoint:3,transform:3,axes:6,fixed:3}[topic]||2;}
+function paintHintText(){
+ if(state.hintTopic==='coordinateDifference'){paintGridlessHint();return;}
+ if(['transform','axes','fixed'].includes(state.hintTopic)){paintAdvancedHint();return;}
+ const name=state.hintTopic==='integerPoint'?'整数の点':state.hintTopic==='intercept'?'切片':'傾き';
+ $('#hintTitle').textContent=name+'のヒント '+state.hintStage+'/'+hintStages(state.hintTopic);
+ $('#hintNext').hidden=state.hintStage===hintStages(state.hintTopic);
+ $('#hintNext').textContent=state.hintTopic==='integerPoint'?'次のヒント':'図で見る';
+ $('#hint').setAttribute('data-worked',String(state.hintTopic==='integerPoint'&&state.hintStage===3));
+ if(state.hintTopic==='integerPoint'){
+  if(state.hintStage===1)$('#hintText').textContent='(x, y) がどちらも整数になる点はどこかな？';
+  else if(state.hintStage===2)$('#hintText').textContent='x に 1、2、…を代入してみよう。y も整数になるかな？';
+  else {
+   const e=integerPointExample(state.q),q=state.q;
+   $('#hintText').innerHTML=`<span>x に ${e.badX} を代入すると、</span><span class="hint-calculation"><i>y</i> = ${frac(q.a)} × ${e.badX} ${q.b.n<0?'−':'+'} ${frac(rat(Math.abs(q.b.n),q.b.d))} = ${frac(e.badY)}</span><span>y は整数にならないね。次に x に ${str(e.nextX)} を代入すると？</span>`;
+  }
+  return;
+ }
+ if(state.hintTopic==='intercept')$('#hintText').textContent=state.hintStage===1?'切片はどこかな？':'切片はここ。y 軸との交点に注目しよう。';
+ else if(state.hintStage===1)$('#hintText').textContent='x が１増えたときに、y がどれだけ変化するかが傾き。';
+ else $('#hintText').innerHTML='<span>横と縦の変化に注目。</span><span class="hint-formula" role="math" aria-label="傾き イコール 横の変化分の縦の変化"><span aria-hidden="true">傾き ＝</span><span class="hint-fraction" aria-hidden="true"><span>縦の変化</span><span>横の変化</span></span></span>';
+}
+function syncHintProgress(){
+ if($('#hint').hidden||state.hintManual)return;
+ const topic=suggestedHintTopic();
+ if(topic!==state.hintTopic){state.hintTopic=topic;state.hintStage=1;paintHintText();}
+}
+function showHint(topic=null,stage=null){
+ $('#coefficientTip').hidden=true;
+ state.hintManual=topic!==null;
+ const nextTopic=topic||suggestedHintTopic();
+ state.hintStage=stage||($('#hint').hidden||state.hintTopic!==nextTopic?1:Math.min(hintStages(nextTopic),state.hintStage+1));
+ state.hintTopic=nextTopic;
+ $('#hint').hidden=false;$('#hintButton').setAttribute('aria-expanded',String(nextTopic!=='axes'));$('#axesHintButton').setAttribute('aria-expanded',String(nextTopic==='axes'));
+ paintHintText();drawGraph();
+}
+function setMode(mode,renew=true){if(!['draw','read'].includes(mode))throw Error('学習の方向が無効です。');if(state.mode===mode)return;state.mode=mode;document.querySelectorAll('[data-mode]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.mode===mode)));$('#instruction').textContent=mode==='draw'?'切片と傾きから、グラフを描こう。':'この直線の式を、紙で求めよう。';if(renew)newQuestion();}
+function setLevel(level,renew=true){if(!pools[level])throw Error('難易度が無効です。');if(state.level!==level){state.level=level;document.querySelectorAll('[data-level]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.level===level)));$('#levelBadge').textContent=level==='integer'?'整数':'分数';if(renew)newQuestion()}toggleSettings(false);}
+function toggleSettings(open){$('#settings').hidden=!open;$('#settingsToggle').setAttribute('aria-expanded',String(open));}
+document.querySelectorAll('[data-mode]').forEach(el=>el.onclick=()=>setMode(el.dataset.mode));document.querySelectorAll('[data-level]').forEach(el=>el.onclick=()=>setLevel(el.dataset.level));$('#settingsToggle').onclick=()=>toggleSettings($('#settings').hidden);$('#closeSettings').onclick=()=>toggleSettings(false);$('#hintButton').onclick=()=>showHint(state.q.kind==='general'?'transform':null);$('#axesHintButton').onclick=()=>showHint('axes');$('#hintNext').onclick=advanceHint;$('#closeHint').onclick=()=>{$('#hint').hidden=true;$('#hintButton').setAttribute('aria-expanded','false');$('#axesHintButton').setAttribute('aria-expanded','false');drawGraph()};$('#check').onclick=check;$('#next').onclick=newQuestion;$('#refreshQuestion').onclick=newQuestion;$('#skip').onclick=newQuestion;$('#reset').onclick=reset;
+const keys=['1','2','3','4','5','back','6','7','8','9','0','clear'];$('.keypad-grid').innerHTML=keys.map(k=>`<button data-key="${k}" aria-label="${k==='back'?'１文字削除':k==='clear'?'入力を消す':k}">${k==='back'?'⌫':k==='clear'?'消す':k}</button>`).join('');document.querySelectorAll('[data-key]').forEach(el=>el.onclick=()=>edit(el.dataset.key));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#coefficientTip').hidden=true;closeKeyboard();toggleSettings(false);$('#closeHint').click();return}if(!state.active)return;if(/^\d$/.test(e.key)||['-','/','Backspace','Delete','Enter'].includes(e.key)){e.preventDefault();if(e.key==='Enter')commit(state.active.startsWith('p')?state.active[1]:'ab');else edit(e.key==='-'?'minus':e.key==='/'?'fraction':e.key==='Backspace'?'back':e.key==='Delete'?'clear':e.key)}});
+
+function selectPoint(index){
+ state.targetPoint=index;
+ document.querySelectorAll('[data-select-point]').forEach(el=>el.setAttribute('aria-pressed',String(Number(el.dataset.selectPoint)===index)));
+}
+function snapGraphPoint(x,y){
+ if(x<48||x>312||y<28||y>292)return null;
+ return [Math.round((x-180)/22)||0,Math.round((160-y)/22)||0];
+}
+function placeGraphPoint(event){
+ if(state.mode==='read'&&event.target.closest('[data-hint-intercept]')){state.readAnchor=true;showHint();return;}
+ if(state.mode!=='draw'||state.solved||event.target.closest('.plot-point'))return;
+ const svg=$('#graph'),matrix=svg.getScreenCTM();
+ if(!matrix)return;
+ const position=svg.createSVGPoint();position.x=event.clientX;position.y=event.clientY;
+ const local=position.matrixTransform(matrix.inverse());
+ const point=snapGraphPoint(local.x,local.y);if(!point)return;
+ const i=state.targetPoint;
+ for(const [axis,value]of [['x',point[0]],['y',point[1]]]){const id=`p${i}${axis}`;state.values[id]=String(value);$('#'+id).value=String(value);}
+ commit(String(i));
+ if(!state.points[1-i]){selectPoint(1-i);feedback(`点${i?'B':'A'}を配置。次は点${state.targetPoint?'B':'A'}をタップ。`)}
+ else feedback('２点を結びました。A・Bを選ぶと置き直せます。');
+}
+$('#graph').addEventListener('click',placeGraphPoint);
+$('#equation').addEventListener('click',event=>{
+ const term=event.target.closest('[data-topic]');if(!term)return;
+ const topic=term.dataset.topic;
+ $('#hint').hidden=true;$('#hintButton').setAttribute('aria-expanded','false');$('#axesHintButton').setAttribute('aria-expanded','false');drawGraph();
+ $('#coefficientTipAction').dataset.topic=topic;
+ $('#coefficientTipAction').textContent=topic==='slope'?'傾き':'切片';
+ $('#coefficientTipAction').setAttribute('aria-label',(topic==='slope'?'傾き':'切片')+'を図で見る');
+ $('#coefficientTip').hidden=false;
+});
+$('#coefficientTipAction').onclick=()=>showHint($('#coefficientTipAction').dataset.topic,2);
+$('#closeCoefficientTip').onclick=()=>{$('#coefficientTip').hidden=true};
+
+function isAxisQuestion(q=state.q){return q?.kind==='vertical'||q?.kind==='horizontal';}
+function distinctPoints(points){return !eq(points[0][0],points[1][0])||!eq(points[0][1],points[1][1]);}
+function pointOnQuestion(q,p){
+ if(q.kind==='vertical')return eq(p[0],q.k);
+ if(q.kind==='horizontal')return eq(p[1],q.k);
+ return eq(p[1],add(mul(q.a,p[0]),q.b));
+}
+function toGeneral(q){
+ const scale=q.a.d*q.b.d/gcd(q.a.d,q.b.d);
+ let A=-q.a.n*scale/q.a.d,B=scale,C=q.b.n*scale/q.b.d;
+ const g=gcd(gcd(A,B),C);A/=g;B/=g;C/=g;
+ if(A<0){A=-A;B=-B;C=-C;}
+ return {...q,kind:'general',A,B,C};
+}
+const advancedPools={};
+for(const level of ['integer','fraction']){
+ advancedPools[level]={general:pools[level].filter(q=>!q.b.n||Math.abs(num(div(rat(-q.b.n,q.b.d),q.a)))<=5).map(toGeneral),vertical:[],horizontal:[]};
+ for(const kind of ['vertical','horizontal'])for(let d=1;d<=4;d++)for(let n=-12;n<=12;n++){
+  if(gcd(n,d)!==1||Math.abs(n/d)>4||(level==='integer'?d!==1:d===1))continue;
+  const k=rat(n,d),pts=kind==='vertical'?[[k,rat(-2)],[k,rat(2)]]:[[rat(-2),k],[rat(2),k]];
+  advancedPools[level][kind].push({kind,k,a:rat(0),b:k,pts});
+ }
+}
+function questionKey(q){return q?.kind==='vertical'?'x='+str(q.k):str(q?.a||rat(0))+','+str(q?.b||rat(0));}
+function chooseAdvancedQuestion(){
+ const cycle=['general','general','vertical','general','horizontal','general'];
+ const kind=state.includeAxis?cycle[state.advancedCount++%cycle.length]:'general';
+ let pool=advancedPools[state.level][kind];const alternate=pool.filter(q=>questionKey(q)!==questionKey(state.q));if(alternate.length)pool=alternate;
+ return pool[Math.floor(Math.random()*pool.length)];
+}
+function algebraTerm(n,variable,first=false){
+ const coefficient=Math.abs(n)===1?'':String(Math.abs(n));
+ return (n<0?'−':first?'':'+')+coefficient+`<i>${variable}</i>`;
+}
+function advancedFormula(q){
+ if(isAxisQuestion(q))return `<span class="advanced-equation"><i>${q.kind==='vertical'?'x':'y'}</i> = ${frac(q.k)}</span>`;
+ return `<span class="advanced-equation">${algebraTerm(q.A,'x',true)} ${algebraTerm(q.B,'y')} = ${q.C<0?'−'+Math.abs(q.C):q.C}</span>`;
+}
+function updateSettings(){
+ const advanced=state.scope==='advanced',gridless=advanced&&state.mode==='read';
+ $('h1 span').textContent=gridless?'座標から式':advanced?'いろいろな直線':'一次関数';
+ document.querySelectorAll('[data-scope]').forEach(el=>{el.disabled=false;el.setAttribute('aria-pressed',String(el.dataset.scope===state.scope))});
+ $('#axisOption').hidden=!advanced||gridless;
+ $('#difficultySettings').hidden=gridless;
+ $('#includeAxis').checked=state.includeAxis;
+ $('#scopeNote').textContent=state.mode==='read'?'発展：グリッドなし。交点と切片は整数、傾きは整数・分数を混ぜて出題。':'発展：いろいろな直線（式からグラフ）';
+ $('#levelBadge').textContent=gridless?'発展・目盛りなし':(advanced?'発展・':'')+(state.level==='integer'?'整数':'分数');
+}
+function updateHintButtons(){
+ const general=state.q.kind==='general';
+ $('#hintButton').textContent=general?'? 式変形':'?';
+ $('#hintButton').classList.toggle('method-hint',general);
+ $('#hintButton').setAttribute('aria-label',general?'式変形のヒント':'ヒントを表示');
+ $('#axesHintButton').hidden=!general||state.q.C===0;
+}
+function advanceHint(){
+ if(state.hintTopic==='transform'&&state.hintStage===3){state.transformed=true;showHint(null,1);return;}
+ showHint(state.hintManual?state.hintTopic:null);
+}
+function paintAdvancedHint(){
+ const q=state.q,t=state.hintTopic,n=state.hintStage;
+ const title={transform:'式変形',axes:'軸との交点',fixed:'縦線・横線'}[t];
+ $('#hintTitle').textContent=title+'のヒント '+n+'/'+hintStages(t);
+ $('#hintNext').hidden=n===hintStages(t)&&t!=='transform';
+ $('#hintNext').textContent=t==='transform'&&n===3?'切片・傾きへ':'次のヒント';
+ $('#hint').setAttribute('data-worked',String(n>=2));
+ const calculation=html=>`<span class="advanced-calculation">${html}</span>`;
+ if(t==='transform'){
+  if(n===1)$('#hintText').innerHTML='まず <i>y</i> = … の形に直せるかな？';
+  if(n===2)$('#hintText').innerHTML='x の項を右辺へ移項しよう。'+calculation(`${algebraTerm(q.B,'y',true)} = ${q.C} ${algebraTerm(-q.A,'x')}`)+`両辺を ${q.B} で割ると？`;
+  if(n===3)$('#hintText').innerHTML=calculation(formula(q.a,q.b))+'この式の切片と傾きから描こう。';
+  return;
+ }
+ if(t==='axes'){
+  const xi=div(rat(q.C),rat(q.A)),yi=div(rat(q.C),rat(q.B));
+  const texts=[
+   'x 軸上では、y はいくつになるかな？',
+   'y = 0 を代入しよう。'+calculation(`${q.A}<i>x</i> ${q.B<0?'−':'+'} ${Math.abs(q.B)} × 0 = ${q.C}`)+calculation(`${algebraTerm(q.A,'x',true)} = ${q.C}`),
+   calculation(`<i>x</i> = ${frac(xi)}　点 (${frac(xi)}, 0)`)+'次は y 軸。x はいくつになるかな？',
+   'x = 0 を代入しよう。'+calculation(`${q.A} × 0 ${algebraTerm(q.B,'y')} = ${q.C}`)+calculation(`${algebraTerm(q.B,'y',true)} = ${q.C}`),
+   calculation(`<i>y</i> = ${frac(yi)}　点 (0, ${frac(yi)})`)+'２つの交点を結ぶと、どんな直線？',
+   '２つの交点を結ぶ直線です。自分でも２点を入力して確かめよう。'
+  ];
+  $('#hintText').innerHTML=texts[n-1]+((n>=3&&(xi.d!==1||yi.d!==1))?'<span class="hint-caption">分数の座標は、入力欄の「分数」で指定できます。</span>':'');
+  return;
+ }
+ const vertical=q.kind==='vertical',fixed=vertical?'x':'y',free=vertical?'y':'x';
+ if(n===1)$('#hintText').innerHTML=`${fixed} はいつも ${frac(q.k)}。${free} は変えられるかな？`;
+ if(n===2)$('#hintText').innerHTML=vertical?calculation(`(${frac(q.k)}, 0) と (${frac(q.k)}, 2)`):calculation(`(0, ${frac(q.k)}) と (2, ${frac(q.k)})`);
+ if(n===2)$('#hintText').innerHTML+=`この２点を結ぶと？${q.k.d!==1?' 分数は座標入力欄で指定しよう。':''}`;
+ if(n===3)$('#hintText').textContent=vertical?'x が一定なので縦の直線。傾きは定義できません。':'y が一定なので横の直線。傾きは０です。';
+}
+function advancedVisualHint(px,py){
+ const q=state.q,n=state.hintStage,t=state.hintTopic;
+ const dot=p=>`<circle cx="${px(num(p[0]))}" cy="${py(num(p[1]))}" r="5" fill="#0d7f85" stroke="white" stroke-width="1.5"/>`;
+ const segment=(p,r)=>`<path d="M${px(num(p[0]))} ${py(num(p[1]))}L${px(num(r[0]))} ${py(num(r[1]))}" stroke="#0d7f85" stroke-width="2.4" stroke-dasharray="5 3" fill="none"/>`;
+ if(t==='axes'){
+  const p=[div(rat(q.C),rat(q.A)),rat(0)],r=[rat(0),div(rat(q.C),rat(q.B))];
+  return `<g class="visual-hint" aria-label="軸との交点の補助図">${n>=6?segment(p,r):''}${n>=3?dot(p):''}${n>=5?dot(r):''}</g>`;
+ }
+ if(t==='fixed'&&n>=2){
+  const vertical=q.kind==='vertical',p=vertical?[q.k,rat(0)]:[rat(0),q.k],r=vertical?[q.k,rat(2)]:[rat(2),q.k];
+  const ends=vertical?[[q.k,rat(-6)],[q.k,rat(6)]]:[[rat(-6),q.k],[rat(6),q.k]];
+  return `<g class="visual-hint" aria-label="${vertical?'同じx座標の２点':'同じy座標の２点'}">${n===3?segment(...ends):''}${dot(p)}${dot(r)}</g>`;
+ }
+ return '';
+}
+document.querySelectorAll('[data-scope]').forEach(el=>el.onclick=()=>{
+ if(state.scope===el.dataset.scope)return;
+ state.scope=el.dataset.scope;state.advancedCount=0;state.gridlessBag=[];newQuestion();toggleSettings(false);
+});
+$('#includeAxis').onchange=()=>{state.includeAxis=$('#includeAxis').checked;if(state.mode==='draw'&&state.scope==='advanced')newQuestion()};
+
+
+const gridlessPools={integer:[],fraction:[]};
+for(const pool of Object.values(pools))for(const q of pool){
+ if(q.b.d!==1||q.b.n===0)continue;
+ const x=div(rat(-q.b.n),q.a);
+ if(x.d!==1||Math.abs(num(x))>5)continue;
+ const pts=[[x,rat(0)],[rat(0),q.b]].sort((p,r)=>num(p[0])-num(r[0]));
+ gridlessPools[q.a.d===1?'integer':'fraction'].push({...q,gridless:true,pts});
+}
+function chooseGridlessQuestion(){
+ if(!state.gridlessBag.length)state.gridlessBag=Math.random()<.5?['integer','fraction']:['fraction','integer'];
+ const type=state.gridlessBag.pop();
+ const pool=gridlessPools[type].filter(q=>questionKey(q)!==questionKey(state.q));
+ return pool[Math.floor(Math.random()*pool.length)];
+}
+function paintGridlessHint(){
+ const n=state.hintStage;
+ $('#hintTitle').textContent='座標から傾き '+n+'/3';
+ $('#hintNext').hidden=n===3;
+ $('#hintNext').textContent=n===1?'補助線を見る':'変化量を見る';
+ $('#hint').setAttribute('data-worked','false');
+ if(n===1)$('#hintText').textContent='２点の x 座標・y 座標の差を考えよう。引く順番をそろえてね。';
+ else $('#hintText').innerHTML=(n===2?'図の引き算で、横・縦の変化を求めよう。':'変化量を使って計算しよう。切片は y 軸との交点。')+'<span class="hint-formula" role="math" aria-label="傾き イコール 横の変化分の縦の変化"><span aria-hidden="true">傾き ＝</span><span class="hint-fraction" aria-hidden="true"><span>縦の変化</span><span>横の変化</span></span></span>';
+}
+
+newQuestion();
+// The same actions are available to browsers that support WebMCP.
+if(document.modelContext?.registerTool){try{const lifecycle=new AbortController();const result=()=>({mode:state.mode,level:state.level,question:state.count,feedback:$('#feedback').textContent});Promise.resolve(document.modelContext.registerTool({name:'start_linear_question',title:'一次関数の問題を始める',description:'指定した方向・難易度の新しい問題を表示し、現在の解答を消します。',inputSchema:{type:'object',properties:{mode:{type:'string',enum:['draw','read']},level:{type:'string',enum:['integer','fraction']}},required:['mode','level'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(input){if(!input||!['draw','read'].includes(input.mode)||!['integer','fraction'].includes(input.level))throw Error('Invalid mode or level');setMode(input.mode,false);setLevel(input.level,false);newQuestion();return result()}},{signal:lifecycle.signal})).catch(()=>{});window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true})}catch{}}
+
+// Keep grid units square while giving the graph all space left by the controls.
+let graphLayoutFrame=0;
+function fitGraphToScreen(){
+ cancelAnimationFrame(graphLayoutFrame);
+ graphLayoutFrame=requestAnimationFrame(()=>{
+  const app=$('#app'),graph=$('.graph-box');
+  const appRect=app.getBoundingClientRect(),graphRect=graph.getBoundingClientRect();
+  app.style.setProperty('--hint-space',Math.max(60,graphRect.top-appRect.top-10)+'px');
+  const viewportHeight=window.visualViewport?.height||window.innerHeight;
+  const otherHeight=appRect.height-graphRect.height;
+  const available=viewportHeight-Math.max(0,appRect.top+window.scrollY)-otherHeight-6;
+  const ideal=graphRect.width*300/310;
+  const height=Math.max(140,Math.min(ideal,available));
+  if(Math.abs(graphRect.height-height)>.5)graph.style.height=height+'px';
+ });
+}
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(fitGraphToScreen).observe($('#app'));
+window.addEventListener('resize',fitGraphToScreen);
+window.visualViewport?.addEventListener('resize',fitGraphToScreen);
+fitGraphToScreen();
+</script></body></html>
